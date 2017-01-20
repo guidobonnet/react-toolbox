@@ -26,13 +26,11 @@ const factory = (RadioButton) => {
 
     renderRadioButtons () {
       return React.Children.map(this.props.children, child => (
-        !isComponentOfType(RadioButton, child)
-          ? child
-          : React.cloneElement(child, {
-              checked: child.props.value === this.props.value,
-              disabled: this.props.disabled || child.props.disabled,
-              onChange: this.handleChange.bind(this, child.props.value)
-            })
+        React.cloneElement(child, {
+          checked: child.props.value === this.props.value,
+          disabled: this.props.disabled || child.props.disabled,
+          onChange: this.handleChange.bind(this, child.props.value)
+        })
       ));
     }
 
