@@ -171,7 +171,7 @@ const factory = (FontIcon) => {
 
       const inputElementProps = {
         ...others,
-        className: classnames(theme.inputElement, {[theme.filled]: valuePresent}),
+        className: classnames(theme.inputElement, {[theme.filled]: valuePresent, [theme.inputElementLimit]: maxLength && length===maxLength}),
         onChange: this.handleChange,
         ref: 'input',
         role: 'input',
@@ -202,7 +202,7 @@ const factory = (FontIcon) => {
             : null}
           {hint ? <span hidden={labelText} className={theme.hint}>{hint}</span> : null}
           {error ? <span className={theme.error}>{error}</span> : null}
-          {maxLength ? <span className={theme.counter}>{length}/{maxLength}</span> : null}
+          {maxLength ? <span className={classnames(theme.counter, {[theme.counterLimit]: length===maxLength})}>{length}/{maxLength}</span> : null}
           {children}
         </div>
       );
