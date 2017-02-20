@@ -202,7 +202,7 @@ const factory = (FontIcon) => {
             : null}
           {hint ? <span hidden={labelText} className={theme.hint}>{hint}</span> : null}
           {error ? <span className={theme.error}>{error}</span> : null}
-          {maxLength ? <span className={theme.counter}>{length}/{maxLength}</span> : null}
+          {maxLength ? <span className={classnames(theme.counter, {[theme.counterLimit]: length === maxLength})}>{length}/{maxLength}</span> : null}
           {children}
         </div>
       );
